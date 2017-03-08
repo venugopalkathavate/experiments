@@ -1,0 +1,123 @@
+<html>
+<head>
+	<title></title>	
+	<style type="text/css">		
+		.container {
+			width: auto;
+			display: inline-block;
+			text-align: center;
+			margin: auto 20px;			
+		}
+
+		.color {	
+			border-radius: 50%;
+			height: 100px;
+			background-color: red;			
+			width: auto;
+			width: 100px;
+			margin: 0 auto;	
+			margin-top: 10px;
+			line-height: 6;	
+			color: #ffffff;
+		}	
+
+		.container span {
+			float: left;
+			margin: 20px;
+		}
+
+		.container span:last-child {
+			float: right;
+		}
+
+		span > div:last-childd {			
+			display: inline-block;	
+		}
+
+		.break {
+			margin: 30px;
+			border-top: 1px solid #ccc;
+		}
+
+		div span {
+			display: inline-block;
+			height: 70px;
+			width: 80px;
+			margin: 0;
+			font-size: 14px;
+			line-height: 65px;
+			text-align: center;
+		}
+
+		div span:first-child {
+			font-size: 20px;
+		}
+
+		.actual {
+			margin-top: 10px;
+		}
+	</style>
+
+	<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="tinycolor.js"></script>
+	<script type="text/javascript">
+		var $primarycolor1 = "#230E26",
+		$primarycolor2 = "#341439",
+		$primarycolor3 = "#230E26",
+		$primarycolor4 = "#341439",
+		$primarycolor5 = "#451B4B",
+		$primarycolor6 = "#56225E",
+		$primarycolor7 = "#672970",
+		$primarycolor8 = "#783084",
+		$primarycolor9 = "#883696",
+		$primarycolor10 = "#9A3DA9",
+		$primarycolor11 = "#AA45BB",
+		$primarycolor12 = "#B357C2",
+		$primarycolor13 = "#BB6AC9",
+		$primarycolor14 = "#C37DCF",
+		$primarycolor15 = "#CC8FD6",
+		$primarycolor16 = "#D5A2DD",
+		$primarycolor17 = "#DDB5E4",
+		$primarycolor18 = "#E6C8EB",
+		$primarycolor19 = "#EEDAF1";
+		$primarycolor20 = "#F7EDF8";
+
+		$(document).ready(function() {
+			var lightness = 10,
+				prim = "#F6ECF8";
+
+			for (var i = 3; i <= 20; i++) {
+				var span = $("<span>")
+					.html(window['$primarycolor' + i])
+					.css("background-color", window['$primarycolor' + i])
+					.css("color", ((i <= 11) ? "#ffffff" : "#000000"));
+
+				$(".desired").append(span);
+			}
+
+			for (var i = 3; i <= 20; i++) {
+				primary = tinycolor(prim).toHsl();				
+				primary.l = lightness;				
+
+				var span = $("<span>")
+					.html("#" + tinycolor(primary).toHex().toUpperCase())
+					.css("background-color", tinycolor(primary).toHex())
+					.css("color", ((i <= 11) ? "#ffffff" : "#000000"));
+
+				$(".actual").append(span);
+				lightness = lightness + 5;
+			}
+		});
+	</script>
+</head>
+<body>
+	<div class="">
+		<div class="desired">
+			<span>Desired</span>			
+		</div>
+		<div class="actual">			
+			<span>Actual</span>
+		</div>
+	</div>
+</body>
+</html>
