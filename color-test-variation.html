@@ -1,0 +1,248 @@
+<html>
+<head>
+	<title></title>	
+	<style type="text/css">		
+		.container {
+			width: auto;
+			display: inline-block;
+			text-align: center;
+			margin: auto 20px;			
+		}
+
+		.color {	
+			border-radius: 50%;
+			height: 100px;
+			background-color: red;			
+			width: auto;
+			width: 100px;
+			margin: 0 auto;	
+			margin-top: 10px;
+			line-height: 6;	
+			color: #ffffff;
+		}	
+
+		.container span {
+			float: left;
+			margin: 20px;
+		}
+
+		.container span:last-child {
+			float: right;
+		}
+
+		span > div:last-childd {			
+			display: inline-block;	
+		}
+
+		.break {
+			margin: 30px;
+			border-top: 1px solid #ccc;
+		}
+
+		div span {
+			display: inline-block;
+			height: 70px;
+			width: 80px;
+			margin: 0;
+			font-size: 14px;
+			line-height: 65px;
+			text-align: center;
+		}
+
+		div span:first-child {
+			font-size: 20px;
+		}
+
+		.actual {
+			margin-top: 10px;
+		}
+
+		#numbers {
+		    color: red;
+		    font-size: 26em;
+		    text-align: center;
+		}
+	</style>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="tinycolor.js"></script>
+	<script type="text/javascript">
+		var $primarycolor1 = "#230E26",
+		$primarycolor2 = "#341439",
+		$primarycolor3 = "#230E26",
+		$primarycolor4 = "#341439",
+		$primarycolor5 = "#451B4B",
+		$primarycolor6 = "#56225E",
+		$primarycolor7 = "#672970",
+		$primarycolor8 = "#783084",
+		$primarycolor9 = "#883696",
+		$primarycolor10 = "#9A3DA9",
+		$primarycolor11 = "#AA45BB",
+		$primarycolor12 = "#B357C2",
+		$primarycolor13 = "#BB6AC9",
+		$primarycolor14 = "#C37DCF",
+		$primarycolor15 = "#CC8FD6",
+		$primarycolor16 = "#D5A2DD",
+		$primarycolor17 = "#DDB5E4",
+		$primarycolor18 = "#E6C8EB",
+		$primarycolor19 = "#EEDAF1";
+		$primarycolor20 = "#F7EDF8";
+
+		$(document).ready(function() {
+			/*$(".container").each(function(i, container) {
+				var color = tinycolor($(container).find("div:first-child").data("selected")).toHsl();
+				color.l = "27.3";
+				$(container).find(".actual").css("background-Color", "#" + tinycolor(color).toHex());
+				$(container).find(".actual").html("#" + tinycolor(color).toHex());
+			});*/
+
+			var lightness = 10,
+				prim = "#F6ECF8";
+
+			for (var i = 3; i <= 20; i++) {
+				var span = $("<span>")
+					// .html(window['$primarycolor' + i])
+					.css("background-color", window['$primarycolor' + i])
+					.css("color", ((i <= 11) ? "#ffffff" : "#000000"));
+
+				$(".desired").append(span);
+			}
+
+			for (var i = 3; i <= 20; i++) {
+				primary = tinycolor(prim).toHsl();				
+				primary.l = lightness;				
+
+				var span = $("<span>")
+					// .html("#" + tinycolor(primary).toHex().toUpperCase())
+					.css("background-color", tinycolor(primary).toHex())
+					.css("color", ((i <= 11) ? "#ffffff" : "#000000"));
+
+				$(".actual").append(span);
+				lightness = lightness + 5;
+			}
+
+			var num = 1;
+
+			$("#numbers").text(num);
+			$("button#nextNum").on("click", function() {				
+				num++;
+				$("#numbers").text(num);				
+			})
+		});
+	</script>
+</head>
+<body>
+	<div class="">
+		<div class="desired">
+			<span>Desired</span>			
+		</div>
+		<div class="actual">			
+			<span>Actual</span>
+		</div>
+	</div>
+
+	<div id="numbers"></div>
+	<button id="nextNum">Next Number</button>
+
+	<!-- <div class="container">
+		Selected
+		<div class="color" data-selected="#bf5700" style="background-color: #bf5700;">#bf5700</div>
+		<span>
+			<div>Desired</div>
+			<div class="color" data-desired="#8c3f00" style="background-color: #8c3f00;">#8c3f00</div>
+		</span>
+		<span>
+			<div>Actual</div>
+			<div class="color actual"></div>
+		</span>		
+	</div>
+	<div class="container">
+		Selected
+		<div class="color" data-selected="#4dff4d" style="background-color: #4dff4d;">#4dff4d</div>
+		<span>
+			<div>Desired</div>
+			<div class="color" data-desired="#00800" style="background-color: #008000;">#008000</div>
+		</span>
+		<span>
+			<div>Actual</div>
+			<div class="color actual"></div>
+		</span>		
+	</div>
+	<div class="container">
+		Selected
+		<div class="color" data-selected="#682673" style="background-color: #682673;">#682673</div>
+		<span>
+			<div>Desired</div>
+			<div class="color" data-desired="#561f5f" style="background-color: #561f5f;">#561f5f</div>
+		</span>
+		<span>
+			<div>Actual</div>
+			<div class="color actual"></div>
+		</span>		
+	</div>
+	<div class="container">
+		Selected
+		<div class="color" data-selected="#31706a" style="background-color: #31706a;">#31706a</div>
+		<span>
+			<div>Desired</div>
+			<div class="color" data-desired="#295e59" style="background-color: #295e59;">#295e59</div>
+		</span>
+		<span>
+			<div>Actual</div>
+			<div class="color actual"></div>
+		</span>		
+	</div>
+	
+	<div class="break"></div>
+
+	<div class="container">
+		Selected
+		<div class="color" data-selected="#195889" style="background-color: #195889;">#195889</div>
+		<span>
+			<div>Desired</div>
+			<div class="color" data-desired="#154a73" style="background-color: #154a73;">#154a73</div>
+		</span>
+		<span>
+			<div>Actual</div>
+			<div class="color actual"></div>
+		</span>		
+	</div>
+	<div class="container">
+		Selected
+		<div class="color" data-selected="#00779d" style="background-color: #00779d;">#00779d</div>
+		<span>
+			<div>Desired</div>
+			<div class="color" data-desired="#006383" style="background-color: #006383;">#006383</div>
+		</span>
+		<span>
+			<div>Actual</div>
+			<div class="color actual"></div>
+		</span>		
+	</div>
+	<div class="container">
+		Selected
+		<div class="color" data-selected="#2b7d6b" style="background-color: #2b7d6b;">#2b7d6b</div>
+		<span>
+			<div>Desired</div>
+			<div class="color" data-desired="#246a5a" style="background-color: #246a5a;">#246a5a</div>
+		</span>
+		<span>
+			<div>Actual</div>
+			<div class="color actual"></div>
+		</span>		
+	</div>	
+
+	<div class="container">
+		Selected
+		<div class="color" data-selected="#a0520a" style="background-color: #a0520a;">#a0520a</div>
+		<span>
+			<div>Desired</div>
+			<div class="color" data-desired="#884508" style="background-color: #884508;">#884508</div>
+		</span>
+		<span>
+			<div>Actual</div>
+			<div class="color actual"></div>
+		</span>		
+	</div> -->	
+</body>
+</html>
