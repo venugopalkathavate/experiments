@@ -1,0 +1,143 @@
+<html>
+<head>
+	<title>Fun With CSS3</title>
+	<style type="text/css">
+		body {
+			width: 105px;
+			margin: 10px auto;
+		}
+
+		body > div {
+			position: absolute;
+			top: 100px;
+			left: 50%;			
+			width: 300px;
+			height: 500px;
+			border-radius: 5px;
+			margin-left: -150px;
+			transition: all .5s ease;
+		}
+
+		.one {
+			background-color: #f05a14;			
+			transform: rotate(0deg);
+			z-index: 100;
+			transition: all .2s ease;
+		}
+
+		.two {
+			background-color: #b90082;
+			transform: rotate(-10deg);
+			transition: all .4s ease;
+			z-index: 99;
+		}
+
+		.three {
+			background-color: #1e46a5;
+			transform: rotate(-20deg);
+			transition: all .6s ease;
+			z-index: 98;
+		}
+		
+		.four {
+			background-color: #0a78a0;
+			transform: rotate(-30deg);
+			transition: all .8s ease;
+			z-index: 97;
+		}
+
+		.five {
+			background-color: #00beeb;
+			transform: rotate(-40deg);
+			transition: all 1s ease;
+			z-index: 96;
+		}	
+
+		.six {
+			background-color: #bd081c;
+			transform: rotate(-50deg);
+			transition: all 1.2s ease;
+			z-index: 95;
+		}
+
+		.play {
+			transform: rotate(0deg);
+		}
+
+		.button {
+			cursor: pointer;
+			border-radius: 50px;
+			padding: 10px;
+			box-shadow: 4px 1px 1px #ccc;
+			display: inline-block;
+			border: 1px solid #ccc;
+			width: 70px;
+			position: relative;
+		}
+
+		.button.played {
+			box-shadow: -4px 1px 1px #ccc;
+		}
+
+		.smilie {
+			float: left;			
+			padding: 10px;
+			border-radius: 50%;
+			border-left: 1px solid #ccc;
+			margin-left: 10px;
+		}
+
+		.played .smilie {
+			float: right;
+		}
+
+		.eye1, .eye2 {
+			position: absolute;
+			padding: 3px;
+			background: #ccc;
+			border-radius: 50%;
+			top: 11px;
+		}
+
+		.eye2 {
+			top: 22px;
+		}		
+
+		.played .eye1, .played .eye2 {
+			right: 13px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.addEventListener("DOMContentLoaded", function() {
+			var button = document.querySelector(".button");
+
+			button.addEventListener("click", function() {
+				var divs = document.querySelectorAll("body > div");
+
+				[].forEach.call(divs, function(div) {
+					if (div.classList.contains("play")) {
+						div.classList.remove("play");
+						button.classList.add("played");
+					} else {
+						div.classList.add("play");
+						button.classList.remove("played");
+					}					
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="one play"></div>
+	<div class="two play"></div>
+	<div class="three play"></div>
+	<div class="four play"></div>
+	<div class="five play"></div>
+	<div class="six play"></div>
+	<section class="button">
+		<div class="smilie"></div>
+		<div class="eye1"></div>
+		<div class="eye2"></div>
+	</section>	
+</body>
+</html>

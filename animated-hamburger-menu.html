@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>
+	</title>
+	<style type="text/css">
+		* {
+			transition: all ease .5s;
+		}
+
+		.container {
+			width: 35px;
+			cursor: pointer;
+		}
+
+		.container > div {
+			margin: 3px;
+			height: 5px;
+			background: #000;			
+			transform-origin: center;
+			position: relative;
+			top: 0;
+			right: 0;
+		}				
+
+		.container:hover > div {
+			transform-origin: top;
+		}
+
+		.container:hover .one {
+		   	transform: rotate(45deg);
+    		position: relative;
+		    top: 7px;		
+		}
+
+		.container:hover .two {
+			opacity: 0;
+		}
+
+		.container:hover .three {
+		    transform: rotate(-45deg);
+			position: relative;
+    		top: -9px;
+    		right: 4px;
+		}				
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="one"></div>
+		<div class="two"></div>
+		<div class="three"></div>
+	</div>
+</body>
+</html>
